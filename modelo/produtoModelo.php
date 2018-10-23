@@ -18,6 +18,14 @@ function pegarProdutoPorId($id) {
     return $produto;
 }
 
+
+function pegarProduto($id, $descricao, $preco) {
+    $sql = "SELECT * FROM produto WHERE id= $id AND descricao = $descricao AND preco = $preco";
+    $resultado = mysqli_query(conn(), $sql);
+    $produto = mysqli_fetch_array($resultado);
+    return $produto;
+}
+
 function adicionarProduto($descricao, $preco, $departamento) {
     $sql = "INSERT INTO produto (descricao, preco, departamento) 
 			VALUES ('$descricao', '$preco', '$departamento')";

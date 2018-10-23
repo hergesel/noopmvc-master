@@ -9,7 +9,7 @@
         <br>
         <h3><?=$produto['preco']?></h3>
         <br>
-        <a href="./inicial/visualizar/<?=$produto['id']?>" class="btn btn-secondary">Comprar</a>
+        <a href="./carrinho/adicionar/<?=$produto['id']?>" class="btn btn-secondary">Comprar</a>
         <br>
         <br>
     </tr>
