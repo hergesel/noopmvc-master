@@ -1,4 +1,4 @@
-<?php
+    <?php
 require_once "modelo/produtoModelo.php";
  
 //http://localhost/app/carrinho
@@ -7,17 +7,21 @@ function index()
     if (isset($_SESSION["carrinho"])) {
         $produtosCarrinho = array();
         foreach ($_SESSION["carrinho"] as $produtoID) {
-            $produtosCarrinho[] = pegarProdutoPorId($produtoID["id"]);
+            
+            $produto = pegarProdutoPorId($produtoID["id"]);
+            $produto["quantidade"] = $produtoID["quantidade"];
+            $produtoTotal = $produtoTotal + $produto["quantidade"];
+            $produtosCarrinho[] = $produto;
         }
 
         $produtoDados = array();
-        foreach ($produtosCarrinho as $produto) {
-            echo $produto["id"];
-        }
+        //foreach ($produtosCarrinho as $produto) {
+           // echo $produto["id"];
+        //}
        
         
         
-        $dados["produtos"] = $produtoDados;
+        $dados["produtos"] = $produtosCarrinho;
 
         exibir("carrinho/listar", $dados);
     } else {
@@ -71,7 +75,5 @@ function teste()
     $vetor[1] = array(2, 5);
     $vetor[3] = array(3, 2);
     $vetor[5] = array(4, 6);
-
-    echo "<pre>";
     print_r($vetor);
 }

@@ -3,28 +3,26 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Descricao</th>
-            <th>Preco</th>
+            <th>Descrição</th>
+            <th>Departamento</th>
+            <th>Preço</th>
             <th>Quantidade</th>
-            <th>Excluir</th>
+            <th>Total</th>
         </tr>
     </thead>
-    <?php
-     for ($i = 0;$i < count($_SESSION["carrinho"]);$i++) {
-    ?>
+
+    
+    
+    <?php foreach ($produtos as $produto): ?>
     <tr>
-        <td><?=$_SESSION["carrinho"][$i]['id']?></td>
-        <td><?=$_SESSION["carrinho"][$i]['descricao']?></td>
-        <td><?=$_SESSION["carrinho"][$i]['preco']?></td>
-        <td><?=$_SESSION["carrinho"][$i]['quantidade']?></td>
-        <td><a href="./carrinho/deletar/<?=$i?>">excluir</a></td>
-
+        <td><?=$produto['id']?></td>
+        <td><?=$produto['descricao']?></td>
+        <td><?=$produto['departamento']?></td>
+        <td><?=$produto['preco']?></td>
+        <td><?=$produto['quantidade']?></td>
+        <td><?=$produto['preco'] * $produto["quantidade"]?></td>
     </tr>
-    <?php
-}
-
-    print_r($produtos);
-    ?>
+    <?php endforeach; ?>
 </table>
 
 
