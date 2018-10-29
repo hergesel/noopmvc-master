@@ -20,9 +20,9 @@
         <td><?=$produto['departamento']?></td>
         <td><?=$produto['preco']?></td>
         <td><?=$produto['quantidade']?></td>
-        <td><?=$produto['preco'] * $produto["quantidade"]?></td>
+        <td><?=$produto['preco'] * $produto['quantidade']?></td>
     </tr>
     <?php endforeach; ?>
 </table>
 
-
+<h3> Total: R$<?=$total?>,00 </h3>
