@@ -2,18 +2,22 @@
 require_once "modelo/produtoModelo.php";
  
 //http://localhost/app/carrinho
+
 function index()
 {
+    
     if (isset($_SESSION["carrinho"])) {
         $produtosCarrinho = array();
+        $produtoTotal = 0;
         foreach ($_SESSION["carrinho"] as $produtoID) {
             
             $produto = pegarProdutoPorId($produtoID["id"]);
             $produto["quantidade"] = $produtoID["quantidade"];
-            $produtoTotal = $produtoTotal + $produto["quantidade"];
+            
+            $produtoTotal = $produtoTotal + ($produto["preco"] * $produto["quantidade"]);
             $produtosCarrinho[] = $produto;
         }
-
+        //echo $produtoTotal;
         $produtoDados = array();
         //foreach ($produtosCarrinho as $produto) {
            // echo $produto["id"];
@@ -22,7 +26,9 @@ function index()
         
         
         $dados["produtos"] = $produtosCarrinho;
-
+        $dados["total"] = $produtoTotal;
+        //echo "<pre>";
+        //print_r($dados);
         exibir("carrinho/listar", $dados);
     } else {
         echo "Nao existem produtos no carrinho!";
