@@ -15,7 +15,7 @@ function authLogin($login, $passwd) {
     //$senha =;
 
     if ($login === $usuario["email"] && $passwd == $usuario["senha"]) {
-        $_SESSION["auth"] = array("user" => $usuario["nome"], "role" => $usuario["tipo"]);
+        $_SESSION["auth"] = array("user" => $usuario["nome"], "role" => $usuario["tipo"], "id" => $usuario["id"]);
         return true;
     }//elseif ($login != $usuario["email"] && $passwd == $usuario["senha"])
     return false;
@@ -35,5 +35,11 @@ function authLogout() {
 function authGetUserRole() {
     if (authIsLoggedIn()) {
         return $_SESSION["auth"]["role"];
+    }
+}
+
+function authGetUserId() {
+    if (authIsLoggedIn()) {
+        return $_SESSION["auth"]["id"];
     }
 }
