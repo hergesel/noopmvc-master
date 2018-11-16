@@ -24,5 +24,8 @@
     </tr>
     <?php endforeach; ?>
 </table>
-
+<form action="<?=@$acao?>" method="POST">
+    nome do cupom:  <input type="text" name="nomecupom" value="<?=@$cupom['nomecupom']?>">
+    <button type="submit">Enviar</button>
+</form>
 <h3> Total: R$<?=$total?>,00 </h3>
