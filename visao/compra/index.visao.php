@@ -19,3 +19,7 @@ print_r($produtos_comprados);
     Cupom: <input type="text" name="cupom">
     <input type="submit" value="Validar">
 </form>
+
+
+
+<a href="./compra/finalizarPedido">Finalizar Pedido</a>

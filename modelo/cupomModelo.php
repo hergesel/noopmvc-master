@@ -3,9 +3,13 @@
 function pegarTodosCupons() {
     $sql = "SELECT * FROM cupom";
     $resultado = mysqli_query($cnx = conn(), $sql);
+    
+     if(!$resultado) { die('Erro ao alterar cupom' . mysqli_error($cnx)); }
+    
+    
     $cupons = array();
     
-    while ($linha = mysqli_fetch_array($resultado)) {
+    while ($linha = mysqli_fetch_assoc($resultado)) {
         $cupons[] = $linha;
     }
     return $cupons;
