@@ -10,12 +10,10 @@ function authLogin($login, $passwd) {
 
     $usuario = pegarUsuarioPorEmailESenha($login, $passwd);
 
-    //$consulta = ;
-    //$user = ;
-    //$senha =;
+   
 
     if ($login === $usuario["email"] && $passwd == $usuario["senha"]) {
-        $_SESSION["auth"] = array("user" => $usuario["nome"], "role" => $usuario["tipo"], "id" => $usuario["id"]);
+        $_SESSION["auth"] = array("user" => $usuario, "role" => $usuario["tipo"]);
         return true;
     }//elseif ($login != $usuario["email"] && $passwd == $usuario["senha"])
     return false;

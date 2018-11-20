@@ -13,12 +13,12 @@
     </thead>
     <?php foreach ($cupons as $cupom): ?>
     <tr>
-        <td><?=$cupom['id']?></td>
+        <td><?=$cupom['idcupom']?></td>
         <td><?=$cupom['nomecupom']?></td>
         <td><?=$cupom['desconto']?></td>
-        <td><a href="./cupom/visualizar/<?=$cupom['id']?>" class="btn btn-secondary">view</a></td>
-        <td><a href="./cupom/editar/<?=$cupom['id']?>" class="btn btn-info">edit</a></td>
-        <td><a href="./cupom/deletar/<?=$cupom['id']?>" class="btn btn-danger">del</a></td>
+        <td><a href="./cupom/visualizar/<?=$cupom['idcupom']?>" class="btn btn-secondary">view</a></td>
+        <td><a href="./cupom/editar/<?=$cupom['idcupom']?>" class="btn btn-info">edit</a></td>
+        <td><a href="./cupom/deletar/<?=$cupom['idcupom']?>" class="btn btn-danger">del</a></td>
     </tr>
     <?php endforeach; ?>
 </table>

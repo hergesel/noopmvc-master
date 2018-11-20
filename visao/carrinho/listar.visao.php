@@ -7,6 +7,8 @@
             <th>Departamento</th>
             <th>Preço</th>
             <th>Quantidade</th>
+            <th>Adicionar</th>
+            <th>Deletar</th>
             <th>Total</th>
         </tr>
     </thead>
@@ -20,12 +22,11 @@
         <td><?=$produto['departamento']?></td>
         <td><?=$produto['preco']?></td>
         <td><?=$produto['quantidade']?></td>
+        <td><a href="./carrinho/adicionarQuantidade/<?=$produto['id']?>"> Adicionar</td> </a>
+        <td><a href="./carrinho/deletar/<?=$produto['id']?>"> Deletar</td> </a>
         <td><?=$produto['preco'] * $produto['quantidade']?></td>
     </tr>
     <?php endforeach; ?>
 </table>
-<form action="<?=@$acao?>" method="POST">
-    nome do cupom:  <input type="text" name="nomecupom" value="<?=@$cupom['nomecupom']?>">
-    <button type="submit">Enviar</button>
-</form>
 <h3> Total: R$<?=$total?>,00 </h3>
+<a href="./compra"> Continuar </a>

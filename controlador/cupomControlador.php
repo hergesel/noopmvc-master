@@ -6,7 +6,7 @@ require_once "modelo/cupomModelo.php";
 function index() {
     $dados["cupons"] = pegarTodosCupons();
     exibir("cupom/listar", $dados);
-    print_r($dados);
+    
 }
 /** admin */
 function adicionar() {

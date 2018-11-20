@@ -11,10 +11,10 @@ function pegarTodosUsuarios() {
 }
 
 function pegarUsuarioPorId($id) {
-    $id = mysqli_real_escape_string(conn(), $id);
-    $sql = "SELiECT * FROM usuario WHERE id= $id";
-    $resultado = mysqli_query(conn(), $sql);
-    $usuario = mysqli_fetch_array($resultado);
+
+    $sql = "SELECT * FROM usuario WHERE id= $id";
+    $resultado = mysqli_query($cnx = conn(), $sql);
+    $usuario = mysqli_fetch_assoc($resultado);
     return $usuario;
 }
 
@@ -24,7 +24,7 @@ function pegarUsuarioPorEmailESenha($login, $senha) {
     $sql = "SELECT * FROM usuario WHERE email = '$login' AND senha = '$senha'";
     $resultado = mysqli_query(conn(), $sql);
     //print_r($resultado);
-    $usuario = mysqli_fetch_array($resultado);
+    $usuario = mysqli_fetch_assoc($resultado);
     return $usuario;
 }
 

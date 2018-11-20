@@ -1,6 +1,6 @@
     <?php
 require_once "modelo/produtoModelo.php";
- 
+ //unset ($_SESSION["carrinho"]);
 //http://localhost/app/carrinho
 
 function index()
@@ -66,20 +66,33 @@ function adicionar($id)
 }
 
 //http://localhost/app/carrinho/deletar/2
-function deletar($index)
+function deletar($id)
 {
-    unset($_SESSION["carrinho"][$index]);
-    $_SESSION["carrinho"] = array_values($_SESSION["carrinho"]);
-    redirecionar("carrinho/index");
-}
+   for ($i = 0; $i < count($_SESSION["carrinho"]); $i++) {
+       if ($_SESSION["carrinho"][$i]["id"] == $id) {
+           $_SESSION["carrinho"][$i]["quantidade"] -= 1;
+                if ($_SESSION["carrinho"][$i]["quantidade"] == 0) {
+                    unset($_SESSION["carrinho"][$i]);
+                    $_SESSION["carrinho"] = array_values($_SESSION["carrinho"]);
+                    redirecionar("carrinho/index");
+                }
 
-function teste()
-{
-    $vetor = array();
+       }
+       }
+       
+       redirecionar ("carrinho/index");
+   }
 
-    $vetor[0] = array(1, 2);
-    $vetor[1] = array(2, 5);
-    $vetor[3] = array(3, 2);
-    $vetor[5] = array(4, 6);
-    print_r($vetor);
-}
+
+function adicionarQuantidade ($id) {
+   for ($i = 0; $i < count($_SESSION["carrinho"]); $i++) {
+       if ($_SESSION["carrinho"][$i]["id"] == $id) {
+           $_SESSION["carrinho"][$i]["quantidade"] += 1;
+       }
+       }
+       
+       redirecionar ("carrinho/index");
+   }
+      
+    
+   
