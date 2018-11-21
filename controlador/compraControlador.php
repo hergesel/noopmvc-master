@@ -12,7 +12,7 @@ function index () {
     if (ehPost()) {
         $cupom = $_POST["cupom"];
         $cup = BuscarCupom($cupom);
-        print_r($cup);
+        echo($cup);
     }
     
     $cliente = $_SESSION["auth"]["user"]["id"];
@@ -26,7 +26,7 @@ function index () {
     }
     print_r($produtos_comprados);
     $dados["produtos_comprados"] = $produtos_comprados;
-    exibir("compra/index",$dados);
+    exibir("compra/listar",$dados);
    
 }
 

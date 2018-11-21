@@ -1,4 +1,4 @@
-    <?php
+<?php
 require_once "modelo/produtoModelo.php";
  //unset ($_SESSION["carrinho"]);
 //http://localhost/app/carrinho
