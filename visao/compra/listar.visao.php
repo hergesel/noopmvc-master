@@ -1,21 +1,45 @@
 <h1> Dados Cliente </h1>
 
-
+<br>
 Nome: <h3><?=$dados_cliente['nome']?></h3>
 Email: <h3><?=$dados_cliente['email']?></h3>
 CPF: <h3><?=$dados_cliente['cpf']?></h3>
 Endereço: <h3><?=$dados_cliente['endereco']?></h3>
 
-
+<br>
+<br>
+<br>
 
 <h1> Produtos Comprados </h1>
 
 <?php
+$quantidade = 0;
+$total = 0;
+foreach ($produtos as $produto) {?>
+    <?php
+    foreach ($_SESSION['carrinho'] as $prod) {
+        if ($prod['id'] == $produto['id']) {
+            $quantidade = $prod['quantidade'];  $total = $total + ($produto['preco'] * $prod['quantidade']);
+          //echo $total. "<br>";
+        }
+        
+    }
+  
+    ?>
+<br>
+Produto: <h3><?=$produto['descricao'];?></h3> <br>
+Preço: <h3><?=$produto['preco'];?></h3><br>
+Quantidade: <h3><?=$quantidade; ?></h3> <br>
+<br>
+<?php } ?>
 
-print_r($produtos_comprados);
-
-
-?>
+Total a pagar: <h3><?php
+if (!isset($desconto)) {
+echo $total;        
+} else {
+  echo $total - $desconto;
+}
+?></h3>
 
 <form action="" method="POST">
     Cupom: <input type="text" name="cupom">
@@ -24,4 +48,4 @@ print_r($produtos_comprados);
 
 
 
-<a href="./compra/finalizarPedido">Finalizar Pedido</a>
+<a href="./pedido/finalizarPedido">Finalizar Pedido</a>

@@ -12,51 +12,27 @@ function index () {
     if (ehPost()) {
         $cupom = $_POST["cupom"];
         $cup = BuscarCupom($cupom);
-        echo($cup);
+        //echo($cup);
+        $desconto = $cup['desconto'];
+        $dados['desconto'] = $desconto;
     }
     
     $cliente = $_SESSION["auth"]["user"]["id"];
     $dados["dados_cliente"] = pegarUsuarioPorId($cliente);
     
-    echo "<pre>";
-    print_r($dados);
+    //echo "<pre>";
+    //print_r($dados);
     $produtos_comprados = array();
     foreach ($_SESSION["carrinho"] as $valor) {
         $produtos_comprados[] = pegarProdutoPorId($valor["id"]);
     }
-    print_r($produtos_comprados);
-    $dados["produtos_comprados"] = $produtos_comprados;
+   //   print_r($produtos_comprados);
+    $dados["produtos"] = $produtos_comprados;
     exibir("compra/listar",$dados);
    
-}
-
-
-function finalizarPedido() {
-    $usuarioLogado = $_SESSION["auth"]["user"];
-    $produtosCarrinho = $_SESSION["carrinho"];
-    
-   
-    
-    $idPedido = adicionarPedido($idusuario, $total, $desconto);
-    
-    foreach ($produtosCarrinho as $produto) {
-        adicionarItemPedido($idPedido, $produto["id"], $produto["quantidade"], $precoproduto, $total);
-        echo $produto["id"];
-        echo $produto["quantidade"];
-        echo "<BR>";
-    }
-    
-    
-    
-    
-    
-
-    
-     
-    
-    
-    
 
 }
+
+ 
 ?>
 

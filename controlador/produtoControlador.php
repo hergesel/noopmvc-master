@@ -11,7 +11,7 @@ function index() {
 function adicionar() {
     if (ehPost()) {
         extract($_POST);
-        alert(adicionarProduto($descricao, $preco, $departamento));
+        alert(adicionarProduto($descricao, $preco, $departamento, $imagem));
         redirecionar("produto/index");
     } else {
         exibir("produto/formulario");
