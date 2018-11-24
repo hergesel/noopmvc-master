@@ -11,4 +11,4 @@ require_once 'bibliotecas/alert.php';
 require_once 'bibliotecas/auth.php';
 
 define('CONTROLADOR_PADRAO', 'inicial');
-define('BASE_URL', 'http://localhost/noopmvc-master/');
+define('BASE_URL', 'https://livrarialegal.000webhostapp.com/');

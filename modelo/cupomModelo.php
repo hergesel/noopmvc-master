@@ -16,7 +16,7 @@ function pegarTodosCupons() {
 }
 
 function pegarCupomPorId($id) {
-    $sql = "SELECT * FROM cupom WHERE id= $id";
+    $sql = "SELECT * FROM cupom WHERE id = $id";
     $resultado = mysqli_query(conn(), $sql);
     $cupom = mysqli_fetch_array($resultado);
     return $cupom;

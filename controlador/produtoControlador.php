@@ -1,6 +1,7 @@
 <?php
 
 require "modelo/produtoModelo.php";
+require 'servicos/uploadServico.php';
 
 function index() {
     $dados["produtos"] = pegarTodosProdutos();
@@ -11,7 +12,8 @@ function index() {
 function adicionar() {
     if (ehPost()) {
         extract($_POST);
-        alert(adicionarProduto($descricao, $preco, $departamento, $imagem));
+        $imagem = uploadImagem($_FILES["imagem"]);
+        adicionarProduto($descricao, $preco, $departamento, $imagem);
         redirecionar("produto/index");
     } else {
         exibir("produto/formulario");

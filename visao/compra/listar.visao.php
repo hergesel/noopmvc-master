@@ -40,11 +40,23 @@ echo $total;
   echo $total - $desconto;
 }
 ?></h3>
+<br>
+<br>
+
+
 
 <form action="" method="POST">
     Cupom: <input type="text" name="cupom">
     <input type="submit" value="Validar">
 </form>
+<br>
+<br>
+<form>
+    <h4><input type="radio" value="boleto" name="pgmt">Boleto</h4>
+    <h4><input type="radio" value="credito" name="pgmt">Cartão de crédito</h4>
+    <h4><input type="radio" value="debito" name="pgmt">Cartão de débito</h4>
+</form>
+
 
 
 
